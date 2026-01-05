@@ -1,0 +1,30 @@
+package com.yrtweb.course.service;
+
+import com.yrtweb.course.entities.User;
+import com.yrtweb.course.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository ur;
+
+    public List<User> findAll(){
+        return ur.findAll();
+
+    }
+    public User findById(Long id){
+        Optional<User> obj = ur.findById(id);
+                return obj.get();
+    }
+
+}
