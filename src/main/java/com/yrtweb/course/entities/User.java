@@ -25,7 +25,7 @@ public class User implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "client")
-    private List<Order> orders = new ArrayList<>();
+    private List<Order> order = new ArrayList<>();
 
 
     public User( ){
@@ -61,7 +61,7 @@ public class User implements Serializable {
     }
 
     public List<Order> getOrders() {
-        return orders;
+        return order;
     }
 
     public void setId(Long id) {

@@ -50,6 +50,18 @@ public class testConfig implements CommandLineRunner {
         cr.saveAll(Arrays.asList(cat1,cat2,cat3));
         pr.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 
+        p1.getCategories().add(cat2);
+        p2.getCategories().add(cat1);
+        p2.getCategories().add(cat3);
+        p3.getCategories().add(cat3);
+        p4.getCategories().add(cat3);
+        p5.getCategories().add(cat2);
+
+        pr.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+
+
+
+
         User u1  = new User(null , "Maria Brown "  , "maria@gmail.com "  , "9232191" , "11121");
         User u2  = new User(null , "Alex Brown "  , "alex@gmail.com "  , "9211231" , "133211");
         ur.saveAll(Arrays.asList(u1,u2));
