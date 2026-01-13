@@ -34,7 +34,6 @@ public class testConfig implements CommandLineRunner {
     private ProductRepository pr;
 
 
-
     @Override
     public void run(String... args) throws Exception {
         Category cat1 = new Category(null, "Electronics");
@@ -47,8 +46,8 @@ public class testConfig implements CommandLineRunner {
         Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
         Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
 
-        cr.saveAll(Arrays.asList(cat1,cat2,cat3));
-        pr.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+        cr.saveAll(Arrays.asList(cat1, cat2, cat3));
+        pr.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 
         p1.getCategories().add(cat2);
         p2.getCategories().add(cat1);
@@ -57,25 +56,16 @@ public class testConfig implements CommandLineRunner {
         p4.getCategories().add(cat3);
         p5.getCategories().add(cat2);
 
-        pr.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+        pr.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 
 
+        User u1 = new User(null, "Maria Brown ", "maria@gmail.com ", "9232191", "11121");
+        User u2 = new User(null, "Alex Brown ", "alex@gmail.com ", "9211231", "133211");
+        ur.saveAll(Arrays.asList(u1, u2));
 
-
-        User u1  = new User(null , "Maria Brown "  , "maria@gmail.com "  , "9232191" , "11121");
-        User u2  = new User(null , "Alex Brown "  , "alex@gmail.com "  , "9211231" , "133211");
-        ur.saveAll(Arrays.asList(u1,u2));
-
-    Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID ,u1);
-    Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT ,u2);
-    Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT ,u1);
-    or.saveAll(Arrays.asList(o1,o2,o3));
-
-
-
-
-
-
+        Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, u1);
+        Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, u2);
+        Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT, u1);
+        or.saveAll(Arrays.asList(o1, o2, o3));
     }
-
 }
