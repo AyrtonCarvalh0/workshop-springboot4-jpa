@@ -1,5 +1,6 @@
 package com.yrtweb.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.yrtweb.course.entities.pk.OrderItemPk;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -21,16 +22,20 @@ public class OrderItem implements Serializable {
     private Integer qtd;
     private Double price;
 
+
     public OrderItem(){
 
     }
 
     public OrderItem(Order order, Product product, Integer qtd, Double price) {
+        id = new OrderItemPk();
         id.setOrder(order);
         id.setProduct(product);
         this.qtd = qtd;
         this.price = price;
     }
+
+    @JsonIgnore
     public Order getOrder(){
 
         return id.getOrder();

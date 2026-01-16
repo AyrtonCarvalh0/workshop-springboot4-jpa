@@ -23,7 +23,7 @@ public class User implements Serializable {
     private String password;
 
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "client")
     private List<Order> order = new ArrayList<>();
 
@@ -60,6 +60,7 @@ public class User implements Serializable {
         return password;
     }
 
+    @JsonIgnore
     public List<Order> getOrders() {
         return order;
     }
