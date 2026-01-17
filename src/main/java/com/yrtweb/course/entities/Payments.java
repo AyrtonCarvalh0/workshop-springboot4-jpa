@@ -1,5 +1,6 @@
 package com.yrtweb.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 
@@ -19,6 +20,7 @@ public class Payments implements Serializable {
     private Long id;
     private Instant moment;
 
+    @JsonIgnore
     @OneToOne
     @MapsId
     private Order order;
