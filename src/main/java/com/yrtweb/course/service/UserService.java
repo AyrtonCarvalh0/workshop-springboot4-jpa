@@ -31,4 +31,8 @@ public class UserService {
        return ur.save(obj);
     }
 
+    public void delete(Long id){
+        ur.deleteById(id);
+    }
+
 }
