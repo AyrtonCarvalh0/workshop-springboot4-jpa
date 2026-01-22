@@ -2,6 +2,7 @@ package com.yrtweb.course.service;
 
 import com.yrtweb.course.entities.User;
 import com.yrtweb.course.repositories.UserRepository;
+import com.yrtweb.course.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties;
 import org.springframework.stereotype.Component;
@@ -24,7 +25,7 @@ public class UserService {
     }
     public User findById(Long id){
         Optional<User> obj = ur.findById(id);
-                return obj.get();
+                return obj.orElseThrow(()-> new ResourceNotFoundException(id));
     }
 
     public User insert (User obj){
