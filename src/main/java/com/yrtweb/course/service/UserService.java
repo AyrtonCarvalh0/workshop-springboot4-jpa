@@ -4,6 +4,7 @@ import com.yrtweb.course.entities.User;
 import com.yrtweb.course.repositories.UserRepository;
 import com.yrtweb.course.service.exceptions.DatabaseException;
 import com.yrtweb.course.service.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.dao.DataIntegrityViolationException;
@@ -48,9 +49,13 @@ public class UserService {
     }
 
     public User update(Long id , User obj){
+        try{
         User entity = ur.getReferenceById(id);
         updateData(entity,obj);
         return ur.save(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(id);
+        }
     }
 
     private void updateData(User entity, User obj) {
